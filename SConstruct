@@ -129,8 +129,8 @@ except:
 	print("ERROR: Missing option --target=<TARGET>. Available targets are: CRP and Tests.")
 	exit()
 
-commonCFlags = ["-c", "-fmessage-length=0", "-std=c++11", "-fPIC", "-fopenmp"]
-commonCppFlags = ["-std=c++11", "-Wall", "-c", "-fmessage-length=0", "-fPIC", "-fopenmp"]
+commonCFlags = ["-c", "-fmessage-length=0", "-std=c++17", "-fPIC", "-fopenmp"]
+commonCppFlags = ["-std=c++17", "-Wall", "-c", "-fmessage-length=0", "-fPIC", "-fopenmp"]
 
 debugCppFlags = ["-O0", "-g3"]
 debugCFlags = ["-O0", "-g3"]
