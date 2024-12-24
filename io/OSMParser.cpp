@@ -27,6 +27,7 @@
 
 #include "OSMParser.h"
 
+#include <numeric>
 #include <iostream>
 #include <vector>
 #include <unordered_set>

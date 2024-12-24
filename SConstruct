@@ -30,7 +30,7 @@ def getSourceFiles(target, optimize):
 
 	# walk source directory and find ONLY .cpp files
 	for (dirpath, dirnames, filenames) in os.walk(srcDir):
-	    for name in fnmatch.filter(filenames, "*.cpp"):
+		for name in fnmatch.filter(filenames, "*.cpp"):
 			source.append(os.path.join(dirpath, name))
 
 	xpatterns = ["*Customization.cpp", "*Precalculation.cpp", "*OSMParser.cpp", "*Test.cpp"]
@@ -118,16 +118,16 @@ if GetOption("clean"):
 	exit()
 
 try:
-    optimize = GetOption("optimize")
+	optimize = GetOption("optimize")
 except:
-    print("ERROR: Missing option --optimize=<LEVEL>. Available levels are: Opt, Dbg and Pro.")
-    exit()
+	print("ERROR: Missing option --optimize=<LEVEL>. Available levels are: Opt, Dbg and Pro.")
+	exit()
 
 try:
-    target = GetOption("target")
+	target = GetOption("target")
 except:
-    print("ERROR: Missing option --target=<TARGET>. Available targets are: CRP and Tests.")
-    exit()
+	print("ERROR: Missing option --target=<TARGET>. Available targets are: CRP and Tests.")
+	exit()
 
 commonCFlags = ["-c", "-fmessage-length=0", "-std=c++11", "-fPIC", "-fopenmp"]
 commonCppFlags = ["-std=c++11", "-Wall", "-c", "-fmessage-length=0", "-fPIC", "-fopenmp"]
@@ -145,17 +145,17 @@ env.Append(CFLAGS = commonCFlags)
 env.Append(CPPFLAGS = commonCppFlags)
 
 if optimize == "Dbg":
-    env.Append(CFLAGS = debugCFlags)
-    env.Append(CPPFLAGS = debugCppFlags)
+	env.Append(CFLAGS = debugCFlags)
+	env.Append(CPPFLAGS = debugCppFlags)
 elif optimize == "Opt":
-    env.Append(CFLAGS = optimizedCFlags)
-    env.Append(CPPFLAGS = optimizedCppFlags)
+	env.Append(CFLAGS = optimizedCFlags)
+	env.Append(CPPFLAGS = optimizedCppFlags)
 elif optimize == "Pro":
 	 env.Append(CFLAGS = profileCFlags)
 	 env.Append(CPPFLAGS = profileCppFlags)
 else:
-    print("ERROR: invalid optimize: %s" % optimize)
-    exit()
+	print("ERROR: invalid optimize: %s" % optimize)
+	exit()
 
 
 source = getSourceFiles(target, optimize)
